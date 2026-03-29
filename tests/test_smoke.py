@@ -1,4 +1,5 @@
 from datetime import datetime, UTC
+
 from nana_risk.schema import Finding, RiskScan
 
 
@@ -17,5 +18,6 @@ def test_schema_smoke():
         risk_score=10,
         findings=[finding],
     )
+
     assert scan.repo_name == "demo"
     assert scan.findings[0].id == "CI_PRESENT"
