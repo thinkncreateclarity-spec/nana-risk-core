@@ -1,0 +1,49 @@
+{
+  "repo_name": "example-repo",
+  "repo_path": "/home/ajay/code/example-repo",
+  "commit_hash": "abc123def456",
+  "scanned_at": "2026-03-29T04:45:00Z",
+  "risk_score": 78,
+  "findings": [
+    {
+      "id": "CI_MISSING",
+      "title": "No CI pipeline configured",
+      "severity": "high",
+      "category": "ci",
+      "description": "No CI configuration files found in .github/workflows, .gitlab-ci.yml, or other common locations.",
+      "evidence": "Scanned repo root; no CI-related files detected.",
+      "remediation": "Add a minimal GitHub Actions workflow to run tests and linting on every push."
+    },
+    {
+      "id": "SECRETS_FOUND",
+      "title": "Potential secrets in repository",
+      "severity": "critical",
+      "category": "security",
+      "description": "Patterns resembling API keys were found in tracked files.",
+      "evidence": "Matches in config/example.env and app/settings.py.",
+      "remediation": "Move secrets to environment variables or a secret manager, rotate the keys, and remove them from git history."
+    },
+    {
+      "id": "TESTS_MISSING",
+      "title": "No tests detected",
+      "severity": "medium",
+      "category": "tests",
+      "description": "No tests/ directory or test_*.py files found.",
+      "evidence": "Scanned Python files; none matched test naming patterns.",
+      "remediation": "Add a tests/ directory with at least smoke tests for critical paths."
+    }
+  ],
+  "ai_summary": {
+    "top_risks": [
+      "Critical: Secrets likely committed to the repo.",
+      "High: No CI pipeline means changes are unverified before deploy.",
+      "Medium: No tests increases risk of regressions."
+    ],
+    "recommended_next_steps": [
+      "Immediately remove and rotate any committed secrets.",
+      "Introduce a minimal CI workflow to run tests and linting.",
+      "Add smoke tests for core business flows."
+    ],
+    "overall_comment": "This repo has serious security and reliability risks. Address secrets and CI within the next sprint."
+  }
+}
