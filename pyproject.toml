@@ -13,3 +13,6 @@ dependencies = [
     "typer",
     "rich",
 ]
+
+[project.scripts]
+nana-risk = "nana_risk.cli:app"
